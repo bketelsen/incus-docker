@@ -16,6 +16,9 @@ RUN echo "deb http://deb.debian.org/debian bookworm contrib" >> /etc/apt/sources
 # Clean up
     apt autoremove -y && \
     apt-get clean && \
+# Change Groups
+    groupmod -g 250 incus-admin
+    groupmod -g 251 incus
 # Disable TTY
     systemctl mask getty@tty1.service && \
     systemctl mask getty@tty2.service && \
